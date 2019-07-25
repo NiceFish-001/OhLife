@@ -1,0 +1,43 @@
+
+ <!-- <div class="clearfix">http://localhost:54882/Handler1.ashx -->
+     
+ 
+      <div>
+          <ckeditor [editor]="Editor" [(ngModel)]="ckeditorContent" [config]="config">
+          </ckeditor>
+          <div style="background:#FAFAFA;border: 0.5px solid#C4C4C4;padding:2px 20px">
+              <div>
+                      <i nz-icon type="form"></i>
+                      <span>剩余</span>
+                      <label>{{500-ckeditorContent.length}}</label>
+                      <label>字</label>
+              </div>
+              <div class="clearfix">
+                <nz-upload
+                  nzAction="http://localhost:52233/api/diaryoperation/picture"
+                  nzListType="picture-card"
+                  [(nzFileList)]="fileList"
+                  [nzShowButton]="fileList.length < 3"
+                  [nzShowUploadList]="showUploadList"
+                  [nzPreview]="handlePreview"
+                  (nzChange)="handleChange($event)"
+                >
+                  <i nz-icon nzType="plus"></i>
+                  <div class="ant-upload-text">上传图片</div>
+                </nz-upload>
+                <nz-modal
+                  [nzVisible]="previewVisible"
+                  [nzContent]="modalContent"
+                  [nzFooter]="null"
+                  (nzOnCancel)="previewVisible = false"
+                >
+                  <ng-template #modalContent>
+                    <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                  </ng-template>
+                </nz-modal>
+              </div>
+          </div>
+          <div style="background:#FAFAFA;border: 0.5px solid#C4C4C4;padding:2px 20px;text-align: right">
+            <button nz-button nzType="primary" (click)="uplode()"><i nz-icon nzType="upload" nzTheme="outline"></i>发布</button>
+          </div>
+      </div> 

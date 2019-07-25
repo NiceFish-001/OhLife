@@ -1,0 +1,15 @@
+<div>
+    <ckeditor [editor]="Editor" [(ngModel)]="ckeditorContent" [config]="config">
+    </ckeditor>
+    <div style="background:#FAFAFA;border: 0.5px solid#C4C4C4;overflow: hidden;padding:2px 20px">
+        <div style="float: left;">
+                <i nz-icon type="form"></i>
+                <span>剩余</span>
+                <label>{{500-ckeditorContent.length}}</label>
+                <label>字</label>
+        </div>
+        <div style="float:right;">
+                <button nz-button nzType="primary" (click)="uplode()"><i nz-icon nzType="upload" nzTheme="outline"></i>发布</button>
+        </div>
+    </div>
+</div>

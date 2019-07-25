@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DiaryDBModelStoreContainer" CdmEntityContainer="DiaryDBEntitiesOne">
+    <EntitySetMapping Name="User_tb">
+      <EntityTypeMapping TypeName="DiaryDBModel.User_tb">
+        <MappingFragment StoreEntitySet="User_tb">
+          <ScalarProperty Name="User_tbID" ColumnName="User_tbID" />
+          <ScalarProperty Name="Accountnumber" ColumnName="Accountnumber" />
+          <ScalarProperty Name="Passwordr" ColumnName="Passwordr" />
+          <ScalarProperty Name="Registertime" ColumnName="Registertime" />
+          <ScalarProperty Name="Memberstate" ColumnName="Memberstate" />
+          <ScalarProperty Name="Accountstate" ColumnName="Accountstate" />
+          <ScalarProperty Name="Memberopen" ColumnName="Memberopen" />
+          <ScalarProperty Name="Memberover" ColumnName="Memberover" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diaryinfo_tb">
+      <EntityTypeMapping TypeName="DiaryDBModel.Diaryinfo_tb">
+        <MappingFragment StoreEntitySet="Diaryinfo_tb">
+          <ScalarProperty Name="Diarytime" ColumnName="Diarytime" />
+          <ScalarProperty Name="Diarymedia" ColumnName="Diarymedia" />
+          <ScalarProperty Name="Diarycontent" ColumnName="Diarycontent" />
+          <ScalarProperty Name="Diarytype" ColumnName="Diarytype" />
+          <ScalarProperty Name="User_tbID" ColumnName="User_tbID" />
+          <ScalarProperty Name="DiaryinfoID" ColumnName="DiaryinfoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

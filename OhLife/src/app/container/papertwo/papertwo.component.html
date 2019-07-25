@@ -1,0 +1,12 @@
+
+<div style="width: 20%;float: left;">
+    <div *ngFor="let item of strArr" style="margin-bottom:10px;">
+        <nz-avatar *ngIf="item!=''"  [nzShape]="'square'" [nzSize]='100' nzSrc={{item}}></nz-avatar><br>
+    </div>
+</div>
+<div style="width: 80%;float: right;" [innerHTML]="diarytext"
+>
+</div>
+
+
+

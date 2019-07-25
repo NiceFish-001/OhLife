@@ -1,0 +1,32 @@
+<div>
+  <div style="padding:40px;width: 70%;float: left;background: #fff;position: relative">
+    <nz-timeline>
+      <nz-timeline-item *ngFor="let item of alldiary; let i = index">
+        <a href="javascript:void(0)"  (click)="slect(i)"><span style="display:block;width:180px;">{{item.Diarytime|todate}}</span>[&nbsp;{{item.Diarycontent|totext}}&nbsp;]
+          </a></nz-timeline-item>
+    </nz-timeline>
+    <app-empty *ngIf="emptyshow"></app-empty>
+    <nz-pagination [nzPageIndex]="1" [nzHideOnSinglePage]="true" (nzPageIndexChange)="paging($event)" [nzPageSize]="7" [nzTotal]="nzTotal"></nz-pagination>
+    <div style="position: absolute;top: 40px;right: 40px;">
+      <button nz-button nzType="primary" (click)="diarypage(1,7)"><i nz-icon nzType="rollback"></i>返回</button>
+    </div>
+    
+  </div>
+  <div *ngIf="isshow" style="position:fixed;top: 0px;left: 0;width: 100%;height: 100%;z-index: 9;background: #000;opacity: 0.6;"></div>
+  <div *ngIf="isshow" style="position:fixed;top: 0px;left: 0;width: 100%;height: 100%;z-index: 10;">
+    <nz-card style="width:70%;z-index: 20;margin:30px auto;padding: 10px;background: #fff;opacity: 1;" [nzBordered]="false" nzTitle="Oh Life" [nzExtra]="extraTemplate">
+      <app-paperone [data]='diaryinfo'></app-paperone>
+    </nz-card>
+  <ng-template #extraTemplate>
+      <a nz-popconfirm nzTitle="你确定要删除该日记么?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"
+      ><i nz-icon nzType="exclamation-circle" nzTheme="outline"></i>删除</a><span>&nbsp;&nbsp;</span>
+    <a (click)="diarypagehide()"><i nz-icon nzType="close-circle" nzTheme="outline"></i>关闭</a>
+  </ng-template>
+  </div>
+  <div style="width: 26%;float: right;background: #fff">
+    <div [ngStyle]="{ width: '100%', border: '1px solid #d9d9d9', borderRadius: '4px' }">
+      <nz-calendar nzCard (nzSelectChange)="onValueChange($event)"></nz-calendar>
+    </div>
+  </div>
+</div>
+

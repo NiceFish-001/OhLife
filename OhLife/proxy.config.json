@@ -1,0 +1,9 @@
+{
+    "/create":{
+        "target":"http://120.78.142.80",
+        "secure":false,
+        "pathRewrite":{
+        "^/create":""
+        }    
+}
+}

@@ -1,0 +1,47 @@
+<div [@routerAnimate]>
+  <nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+      <div class="logo">Oh 生活</div>
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed" >
+        
+        <li nz-submenu [nzOpen]="'ul1open'==ulopen">
+          <span title><i nz-icon type="snippets"></i><span class="nav-text">阅读记忆</span></span>
+          <ul>
+            <li nz-menu-item [nzSelected]="'Alldiarypicturepage'==pagetext" [routerLink]="[{outlets:{Sonroute:['Alldiarypicturepage']}}]">图文日记</li>
+            <li nz-menu-item [nzSelected]="'Alldiaryaudiopage'==pagetext" [routerLink]="[{outlets:{Sonroute:['Alldiaryaudiopage']}}]">音频日记</li>
+            <li nz-menu-item [nzSelected]="'Alldiarypage'==pagetext" [routerLink]="[{outlets:{Sonroute:['Alldiarypage']}}]">文字日记</li>
+          </ul>
+        </li>
+        <li nz-submenu [nzOpen]="'ul2open'==ulopen">
+          <span title><i nz-icon type="edit"></i><span class="nav-text">记录生活</span></span>
+          <ul>
+            <li nz-menu-item [nzSelected]="'textpage'==pagetext" [routerLink]="[{outlets:{Sonroute:['textpage']}}]">文字日记</li>
+            <li nz-menu-item [nzDisabled]="btnswith==false?true:false" [nzSelected]="'picturepage'==pagetext" [routerLink]="[{outlets:{Sonroute:['picturepage']}}]">图文日记</li>
+            <li nz-menu-item [nzDisabled]="btnswith==false?true:false" [nzSelected]="'Audiopage'==pagetext" [routerLink]="[{outlets:{Sonroute:['Audiopage']}}]">音频日记</li>
+          </ul>
+        </li>
+        <li nz-menu-item [nzSelected]="'setuppage'==pagetext"  [routerLink]="[{outlets:{Sonroute:['setuppage']}}]">
+          <span><i nz-icon type="setting"></i><span class="nav-text">日记设置</span></span>
+        </li>
+        <li nz-menu-item (click)="translate()">
+          <span><i nz-icon type="poweroff"></i><span class="nav-text">退出登录</span></span>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header style="background: #fff; padding:0;">
+        <i  class="trigger" nz-icon [type]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
+      </nz-header>
+      <nz-content style="margin:0 16px;">
+        <div style="padding:24px; background: #F0F2F5; height: 600px;width:100% ;">
+          <router-outlet name="Sonroute"></router-outlet>
+        </div>
+      </nz-content>
+      <nz-footer style="text-align: center;">Made with ❤ by 三少 team<br><i></i><br></nz-footer>
+    </nz-layout>
+  </nz-layout>
+  <ng-template #trigger>
+    <i nz-icon type="up"></i>
+  </ng-template>
+</div>
+

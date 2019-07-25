@@ -1,0 +1,26 @@
+
+<div style="background:#FFFFFF url(../../../assets/imges/audiobg.jpg) 
+no-repeat right;width: 100%;height: 600px;
+background-size:contain;margin: auto;padding: 10% 5%;position: relative">
+<div style="border: 1px solid #ededed;padding: 10px;border-radius: 10px;width: 40%;">
+  <button (click)="open()" nz-button [nzSize]="size" nzType="primary"><i nz-icon nzType="poweroff" nzTheme="outline"></i>开启麦克</button>
+  <button (click)="start()" nz-button [nzSize]="size" nzType="primary"><i nz-icon nzType="play-circle" nzTheme="outline"></i>开始录音</button><br>
+  <button (click)="playRecording()" nz-button [nzSize]="size" nzType="primary"><i nz-icon nzType="pause-circle" nzTheme="outline"></i>结束录音</button>
+  <button (click)="bianyi()" nz-button [nzSize]="size" nzType="primary"><i nz-icon nzType="global" nzTheme="outline"></i>编译音频</button><br>
+  <div>
+    <audio controls="controls" id="audio"><br>
+    </audio>
+  </div>
+  <textarea rows="4" style="resize:none;width: 100%" nz-input [(ngModel)]="inputValue"></textarea><br>
+
+  <button (click)="uplodeaudio()" nz-button [nzSize]="size" nzType="primary"><i nz-icon nzType="upload" nzTheme="outline"></i>发布日记</button>
+  <div *ngIf="isVisible" style="background: #000;width: 100%;height: 60%;opacity: 0.8;position: absolute;top:20%;left: 0px;">
+        <div style="text-align: center;margin:15%">
+            <nz-spin [nzSpinning]="true"  nzSimple [nzSize]="'large'">
+              </nz-spin><span style="color: #FFFFFF">正在上传. . . . . .</span>
+        </div>
+  </div>
+</div>
+</div>
+
+

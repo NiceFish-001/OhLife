@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DiaryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Diaryinfo_tb">
+          <Key>
+            <PropertyRef Name="DiaryinfoID" />
+          </Key>
+          <Property Name="DiaryinfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_tbID" Type="int" />
+          <Property Name="Diarytype" Type="int" Nullable="false" />
+          <Property Name="Diarycontent" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Diarymedia" Type="nvarchar" MaxLength="200" />
+          <Property Name="Diarytime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_tb">
+          <Key>
+            <PropertyRef Name="User_tbID" />
+          </Key>
+          <Property Name="User_tbID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Accountnumber" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Passwordr" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Registertime" Type="datetime" Nullable="false" />
+          <Property Name="Memberstate" Type="bit" Nullable="false" />
+          <Property Name="Accountstate" Type="bit" Nullable="false" />
+          <Property Name="Memberopen" Type="datetime" />
+          <Property Name="Memberover" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Diaryinfo__User___239E4DCF">
+          <End Role="User_tb" Type="Self.User_tb" Multiplicity="0..1" />
+          <End Role="Diaryinfo_tb" Type="Self.Diaryinfo_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_tb">
+              <PropertyRef Name="User_tbID" />
+            </Principal>
+            <Dependent Role="Diaryinfo_tb">
+              <PropertyRef Name="User_tbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiaryDBModelStoreContainer">
+          <EntitySet Name="Diaryinfo_tb" EntityType="Self.Diaryinfo_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_tb" EntityType="Self.User_tb" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Diaryinfo__User___239E4DCF" Association="Self.FK__Diaryinfo__User___239E4DCF">
+            <End Role="User_tb" EntitySet="User_tb" />
+            <End Role="Diaryinfo_tb" EntitySet="Diaryinfo_tb" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiaryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User_tb">
+          <Key>
+            <PropertyRef Name="User_tbID" />
+          </Key>
+          <Property Name="User_tbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Accountnumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passwordr" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Registertime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Memberstate" Type="Boolean" Nullable="false" />
+          <Property Name="Accountstate" Type="Boolean" Nullable="false" />
+          <Property Name="Memberopen" Type="DateTime" Precision="3" />
+          <Property Name="Memberover" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Diaryinfo_tb" Relationship="DiaryDBModel.FK__Diaryinfo__User___239E4DCF" FromRole="User_tb" ToRole="Diaryinfo_tb" />
+        </EntityType>
+        <EntityContainer Name="DiaryDBEntitiesOne" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="User_tb" EntityType="Self.User_tb" />
+          <EntitySet Name="Diaryinfo_tb" EntityType="DiaryDBModel.Diaryinfo_tb" />
+          <AssociationSet Name="FK__Diaryinfo__User___239E4DCF" Association="DiaryDBModel.FK__Diaryinfo__User___239E4DCF">
+            <End Role="User_tb" EntitySet="User_tb" />
+            <End Role="Diaryinfo_tb" EntitySet="Diaryinfo_tb" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Diaryinfo_tb">
+          <Key>
+            <PropertyRef Name="DiaryinfoID" />
+          </Key>
+          <Property Name="DiaryinfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_tbID" Type="Int32" />
+          <Property Name="Diarytype" Type="Int32" Nullable="false" />
+          <Property Name="Diarycontent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Diarymedia" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Diarytime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User_tb" Relationship="DiaryDBModel.FK__Diaryinfo__User___239E4DCF" FromRole="Diaryinfo_tb" ToRole="User_tb" />
+        </EntityType>
+        <Association Name="FK__Diaryinfo__User___239E4DCF">
+          <End Type="DiaryDBModel.User_tb" Role="User_tb" Multiplicity="0..1" />
+          <End Type="DiaryDBModel.Diaryinfo_tb" Role="Diaryinfo_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_tb">
+              <PropertyRef Name="User_tbID" />
+            </Principal>
+            <Dependent Role="Diaryinfo_tb">
+              <PropertyRef Name="User_tbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DiaryDBModelStoreContainer" CdmEntityContainer="DiaryDBEntitiesOne">
+          <EntitySetMapping Name="User_tb">
+            <EntityTypeMapping TypeName="DiaryDBModel.User_tb">
+              <MappingFragment StoreEntitySet="User_tb">
+                <ScalarProperty Name="User_tbID" ColumnName="User_tbID" />
+                <ScalarProperty Name="Accountnumber" ColumnName="Accountnumber" />
+                <ScalarProperty Name="Passwordr" ColumnName="Passwordr" />
+                <ScalarProperty Name="Registertime" ColumnName="Registertime" />
+                <ScalarProperty Name="Memberstate" ColumnName="Memberstate" />
+                <ScalarProperty Name="Accountstate" ColumnName="Accountstate" />
+                <ScalarProperty Name="Memberopen" ColumnName="Memberopen" />
+                <ScalarProperty Name="Memberover" ColumnName="Memberover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diaryinfo_tb">
+            <EntityTypeMapping TypeName="DiaryDBModel.Diaryinfo_tb">
+              <MappingFragment StoreEntitySet="Diaryinfo_tb">
+                <ScalarProperty Name="Diarytime" ColumnName="Diarytime" />
+                <ScalarProperty Name="Diarymedia" ColumnName="Diarymedia" />
+                <ScalarProperty Name="Diarycontent" ColumnName="Diarycontent" />
+                <ScalarProperty Name="Diarytype" ColumnName="Diarytype" />
+                <ScalarProperty Name="User_tbID" ColumnName="User_tbID" />
+                <ScalarProperty Name="DiaryinfoID" ColumnName="DiaryinfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

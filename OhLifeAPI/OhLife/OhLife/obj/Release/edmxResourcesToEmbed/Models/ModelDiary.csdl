@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiaryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User_tb">
+    <Key>
+      <PropertyRef Name="User_tbID" />
+    </Key>
+    <Property Name="User_tbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Accountnumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passwordr" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Registertime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Memberstate" Type="Boolean" Nullable="false" />
+    <Property Name="Accountstate" Type="Boolean" Nullable="false" />
+    <Property Name="Memberopen" Type="DateTime" Precision="3" />
+    <Property Name="Memberover" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Diaryinfo_tb" Relationship="DiaryDBModel.FK__Diaryinfo__User___239E4DCF" FromRole="User_tb" ToRole="Diaryinfo_tb" />
+  </EntityType>
+  <EntityContainer Name="DiaryDBEntitiesOne" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User_tb" EntityType="Self.User_tb" />
+    <EntitySet Name="Diaryinfo_tb" EntityType="DiaryDBModel.Diaryinfo_tb" />
+    <AssociationSet Name="FK__Diaryinfo__User___239E4DCF" Association="DiaryDBModel.FK__Diaryinfo__User___239E4DCF">
+      <End Role="User_tb" EntitySet="User_tb" />
+      <End Role="Diaryinfo_tb" EntitySet="Diaryinfo_tb" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Diaryinfo_tb">
+    <Key>
+      <PropertyRef Name="DiaryinfoID" />
+    </Key>
+    <Property Name="DiaryinfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_tbID" Type="Int32" />
+    <Property Name="Diarytype" Type="Int32" Nullable="false" />
+    <Property Name="Diarycontent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Diarymedia" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Diarytime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User_tb" Relationship="DiaryDBModel.FK__Diaryinfo__User___239E4DCF" FromRole="Diaryinfo_tb" ToRole="User_tb" />
+  </EntityType>
+  <Association Name="FK__Diaryinfo__User___239E4DCF">
+    <End Type="DiaryDBModel.User_tb" Role="User_tb" Multiplicity="0..1" />
+    <End Type="DiaryDBModel.Diaryinfo_tb" Role="Diaryinfo_tb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_tb">
+        <PropertyRef Name="User_tbID" />
+      </Principal>
+      <Dependent Role="Diaryinfo_tb">
+        <PropertyRef Name="User_tbID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

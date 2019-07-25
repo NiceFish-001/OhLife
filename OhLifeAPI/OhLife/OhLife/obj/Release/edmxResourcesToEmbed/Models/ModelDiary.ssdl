@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiaryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Diaryinfo_tb">
+    <Key>
+      <PropertyRef Name="DiaryinfoID" />
+    </Key>
+    <Property Name="DiaryinfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_tbID" Type="int" />
+    <Property Name="Diarytype" Type="int" Nullable="false" />
+    <Property Name="Diarycontent" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Diarymedia" Type="nvarchar" MaxLength="200" />
+    <Property Name="Diarytime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_tb">
+    <Key>
+      <PropertyRef Name="User_tbID" />
+    </Key>
+    <Property Name="User_tbID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Accountnumber" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="Passwordr" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Registertime" Type="datetime" Nullable="false" />
+    <Property Name="Memberstate" Type="bit" Nullable="false" />
+    <Property Name="Accountstate" Type="bit" Nullable="false" />
+    <Property Name="Memberopen" Type="datetime" />
+    <Property Name="Memberover" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Diaryinfo__User___239E4DCF">
+    <End Role="User_tb" Type="Self.User_tb" Multiplicity="0..1" />
+    <End Role="Diaryinfo_tb" Type="Self.Diaryinfo_tb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_tb">
+        <PropertyRef Name="User_tbID" />
+      </Principal>
+      <Dependent Role="Diaryinfo_tb">
+        <PropertyRef Name="User_tbID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DiaryDBModelStoreContainer">
+    <EntitySet Name="Diaryinfo_tb" EntityType="Self.Diaryinfo_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_tb" EntityType="Self.User_tb" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Diaryinfo__User___239E4DCF" Association="Self.FK__Diaryinfo__User___239E4DCF">
+      <End Role="User_tb" EntitySet="User_tb" />
+      <End Role="Diaryinfo_tb" EntitySet="Diaryinfo_tb" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

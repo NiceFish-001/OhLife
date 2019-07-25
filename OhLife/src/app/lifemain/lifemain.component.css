@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.logo{
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    background: #00AB93;
+    position: relative;
+    top: -7px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+}

@@ -1,0 +1,33 @@
+
+<div [@routerAnimate] class="loginbg">
+  <div class="loginbody">
+    <img class="loginicon" src='../../assets/imges/OhLife.png'>
+  </div>
+  <div class="loginpage">
+    <p class="logintitle">生活即是回忆，回忆都在这里</p>
+    <br>
+    <div class="logininput">
+        <nz-input-group [nzSuffix]="suffixTemplateuser" [nzPrefix]="prefixTemplateuser">
+            <input type="text" nz-input placeholder="请输入账号" [(ngModel)]="username" />
+          </nz-input-group>
+          <ng-template #prefixTemplateuser><i nz-icon type="user"></i></ng-template>
+          <ng-template #suffixTemplateuser><i nz-icon type="close-circle" (click)="username = ''" *ngIf="username"></i></ng-template>
+         <span>&nbsp;</span>
+         <nz-input-group [nzPrefix]="prefixTemplatepwd" [nzSuffix]="suffixTemplatepwd">
+            <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="请输入密码" [(ngModel)]="password"/>
+          </nz-input-group>
+          <ng-template #prefixTemplatepwd><i nz-icon type="lock"></i></ng-template>
+          <ng-template #suffixTemplatepwd><i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i></ng-template>
+          <span>&nbsp;</span>
+          <button nz-button nzType="primary" (click)="login()" nzBlock>Oh Life</button>
+          <br />
+          <a (click)="register()">注册账号</a>
+        <nz-alert  *ngIf="isBack==true" nzType="warning" nzMessage="账号或密码错误" nzShowIcon></nz-alert>
+    </div>
+  </div>
+</div>
+
+
+
+
+  

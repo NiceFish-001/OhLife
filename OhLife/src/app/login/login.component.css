@@ -1,0 +1,36 @@
+*{
+    margin: 0ox;
+    padding: 0px;
+}
+.loginbg{
+    width: 100%;
+    height: 100%;
+    background: url(../../assets/imges/MyBg.jpg)
+}
+.loginicon{
+    height:50px;
+    width: auto
+}
+.loginbody{
+    padding:20px 40px;
+}
+.loginpage{
+    width: 27%;
+    height: 45%;
+    margin:6% 5%;
+    float: right; 
+    border: 1px solid #808080;
+    border-radius: 10px ;
+    padding: 40px 0px;
+    text-align: center;
+    background: #FCF1F7;
+    opacity: 0.6;
+}
+.logintitle{
+    font-size:20px;
+    font-weight: 400;
+    color: #808080
+}
+.logininput{
+    width:80%;margin: auto;text-align: center
+}
